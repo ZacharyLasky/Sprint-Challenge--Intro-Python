@@ -1,10 +1,5 @@
 import csv
 
-# for row in csv_reader:
-#     print(
-#         f'\t{row[0]}, {row[1]}, {row[2]}, {row[3]}, {row[4]}, {row[5]}, {row[6]}, {row[7]}, {row[8]} \n')
-#     line_count += 1
-
 # Create a class to hold a city location. Call the class "City". It should have
 # fields for name, lat and lon (representing latitude and longitude).
 
@@ -19,18 +14,18 @@ class City:
         return f"{self.name}, {self.lat}, {self.lon}"
 
 
-# We have a collection of US cities with population over 750,000 stored in the
-# file "cities.csv". (CSV stands for "comma-separated values".)
-#
-# In the body of the `cityreader` function, use Python's built-in "csv" module
-# to read this file so that each record is imported into a City instance. Then
-# return the list with all the City instances from the function.
-# Google "python 3 csv" for references and use your Google-fu for other examples.
-#
-# Store the instances in the "cities" list, below.
-#
-# Note that the first line of the CSV is header that describes the fields--this
-# should not be loaded into a City object.
+        # We have a collection of US cities with population over 750,000 stored in the
+        # file "cities.csv". (CSV stands for "comma-separated values".)
+        #
+        # In the body of the `cityreader` function, use Python's built-in "csv" module
+        # to read this file so that each record is imported into a City instance. Then
+        # return the list with all the City instances from the function.
+        # Google "python 3 csv" for references and use your Google-fu for other examples.
+        #
+        # Store the instances in the "cities" list, below.
+        #
+        # Note that the first line of the CSV is header that describes the fields--this
+        # should not be loaded into a City object.
 cities = []
 
 
@@ -42,9 +37,7 @@ def cityreader(cities=[]):
         csv_reader = csv.reader(csv_file)
         for row in csv_reader:
             if row[0] not in "city" and row[3] not in "lat" and row[4] not in "lng":
-                newCity = City(row[0], row[3], row[4])
-                cities.append(newCity)
-
+                cities.append(City(row[0], float(row[3]), float(row[4])))
         return cities
 
 
